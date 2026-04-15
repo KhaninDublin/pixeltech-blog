@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  html {
+    font-family: var(--font-sans), system-ui, sans-serif;
+  }
+  body {
+    @apply bg-bg text-text antialiased;
+    background-image:
+      radial-gradient(1200px 600px at 20% -10%, rgba(139, 92, 246, 0.15), transparent),
+      radial-gradient(1000px 500px at 80% 110%, rgba(6, 214, 160, 0.08), transparent);
+    background-attachment: fixed;
+  }
+  a { @apply transition-colors; }
+  ::selection { @apply bg-accent/40 text-white; }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:ring-offset-2 focus-visible:ring-offset-bg;
+  }
+  .btn-primary { @apply btn bg-accent text-white hover:bg-accent-hover; }
+  .btn-teal    { @apply btn bg-teal text-bg hover:bg-teal-hover; }
+  .btn-ghost   { @apply btn bg-transparent text-text hover:bg-surface; }
+  .btn-outline { @apply btn border border-border text-text hover:bg-surface; }
+  .btn-danger  { @apply btn bg-danger text-white hover:bg-red-600; }
+
+  .card        { @apply rounded-xl border border-border bg-surface; }
+  .card-hover  { @apply card transition hover:border-accent/60 hover:shadow-glow; }
+
+  .input {
+    @apply w-full rounded-lg border border-border bg-surface2 px-3 py-2 text-sm text-text placeholder:text-muted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40;
+  }
+  .label { @apply block text-sm font-medium text-text mb-1.5; }
+
+  .pill        { @apply inline-flex items-center gap-1 rounded-full border border-border bg-surface2 px-3 py-1 text-xs font-medium text-text; }
+  .pill-accent { @apply pill border-accent/40 text-accent; }
+  .pill-teal   { @apply pill border-teal/40 text-teal; }
+
+  .prose-tech {
+    @apply text-text leading-relaxed;
+  }
+  .prose-tech h1 { @apply text-4xl md:text-5xl font-bold mt-6 mb-4 text-white tracking-tight; }
+  .prose-tech h2 { @apply text-2xl md:text-3xl font-bold mt-10 mb-3 text-white; }
+  .prose-tech h3 { @apply text-xl md:text-2xl font-semibold mt-8 mb-2 text-white; }
+  .prose-tech p  { @apply my-4 text-[17px] leading-[1.75] text-text/90; }
+  .prose-tech a  { @apply text-teal underline decoration-teal/40 underline-offset-4 hover:decoration-teal; }
+  .prose-tech ul { @apply my-4 list-disc pl-6 space-y-2; }
+  .prose-tech ol { @apply my-4 list-decimal pl-6 space-y-2; }
+  .prose-tech blockquote {
+    @apply my-5 border-l-4 border-accent/60 bg-surface2 px-5 py-3 rounded-r italic text-text/90;
+  }
+  .prose-tech code:not(pre code) {
+    @apply rounded bg-surface2 px-1.5 py-0.5 text-[0.9em] text-teal font-mono border border-border;
+  }
+  .prose-tech pre {
+    @apply my-6 overflow-x-auto rounded-lg border border-border bg-[#0B0B18] p-4 text-sm font-mono text-text/90;
+  }
+  .prose-tech hr { @apply my-8 border-border; }
+  .prose-tech img { @apply my-6 rounded-lg border border-border; }
+  .prose-tech strong { @apply text-white font-semibold; }
+}
+
+/* Minimal highlight.js tokens so code blocks look decent without extra CSS file */
+.hljs { color: #f8f8f2; }
+.hljs-comment, .hljs-quote { color: #6272a4; font-style: italic; }
+.hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-section, .hljs-link { color: #ff79c6; }
+.hljs-function .hljs-title, .hljs-title.function_ { color: #50fa7b; }
+.hljs-string, .hljs-attr, .hljs-template-tag, .hljs-template-variable { color: #f1fa8c; }
+.hljs-number, .hljs-type, .hljs-built_in, .hljs-builtin-name { color: #bd93f9; }
+.hljs-title, .hljs-class .hljs-title { color: #8be9fd; }
+.hljs-tag, .hljs-name, .hljs-attribute { color: #ff79c6; }
+.hljs-regexp, .hljs-variable { color: #ffb86c; }
+.hljs-deletion { background: #3d2d30; }
+.hljs-addition { background: #233521; }
+
+/* Focus ring for keyboard users everywhere */
+:focus-visible { outline: none; }
